@@ -5,20 +5,21 @@
     <script>
       const redirects = {
         "docasaw": "https://ra-sl.com/dp-B07NQMN8CNLP"
-        // Add more redirects here
+        // Add more short names here
       };
 
-      // Get the path part after the slash
-      const path = window.location.pathname
-        .replace("/redirector/", "") // <-- important: your repo name
-        .toLowerCase();
+      function getParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
 
-      const url = redirects[path];
+      const key = getParam("to");
+      const url = redirects[key?.toLowerCase()];
 
       if (url) {
         window.location.replace(url);
       } else {
-        document.write("<h2>Redirect not found</h2><p>Try a valid shortlink.</p>");
+        document.write("<h2>Redirect not found</h2><p>Use ?to=docasaw</p>");
       }
     </script>
   </head>
