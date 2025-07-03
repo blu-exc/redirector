@@ -4,17 +4,21 @@
     <title>Redirecting...</title>
     <script>
       const redirects = {
-        docasaw: "https://ra-sl.com/dp-B07NQMN8CNLP"
-        // Add more redirects here if needed
+        "docasaw": "https://ra-sl.com/dp-B07NQMN8CNLP"
+        // Add more redirects here
       };
 
-      const path = window.location.pathname.replace("/", "").toLowerCase();
+      // Get the path part after the slash
+      const path = window.location.pathname
+        .replace("/redirector/", "") // <-- important: your repo name
+        .toLowerCase();
+
       const url = redirects[path];
 
       if (url) {
         window.location.replace(url);
       } else {
-        document.write("<h2>Redirect not found</h2><p>Check your link.</p>");
+        document.write("<h2>Redirect not found</h2><p>Try a valid shortlink.</p>");
       }
     </script>
   </head>
